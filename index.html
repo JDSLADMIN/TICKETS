@@ -1,251 +1,273 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tickets - Yard Part 1 Inbound</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
-<style>body{font-family: Inter, system-ui, sans-serif}</style>
-</head>
-<body class="bg-slate-50 min-h-screen">
-<header class="bg-slate-900 text-white p-4 sticky top-0 z-20">
-  <div class="max-w-6xl mx-auto flex justify-between items-center">
-    <h1 class="font-bold text-lg">♻️ Tickets <span class="text-xs bg-green-600 px-2 py-1 rounded ml-2">YARD P1 LIVE</span></h1>
-    <div class="flex gap-2 text-xs">
-      <span id="onlineStatus" class="px-2 py-1 rounded bg-green-500">Online</span>
-      <span id="offlineCount" class="px-2 py-1 rounded bg-amber-500 hidden">0 queued</span>
-      <button id="syncBtn" class="px-2 py-1 rounded bg-white text-slate-900 hidden">Sync Now</button>
-    </div>
-  </div>
-</header>
+<!DOCTYPE html><html lang="en" class="optimisticai_d4925249-module__WZtcjq__variable optimisticmono_9b82a078-module__hMSRWa__variable dark"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/_next/static/immutable/chunks/0_n83orcwyk4s.css" data-precedence="next"/><link rel="stylesheet" href="/_next/static/immutable/chunks/1bu7odp3ip0pm.css" data-precedence="next"/><link rel="stylesheet" href="/_next/static/immutable/chunks/42e7h9g2vn8e3.css" data-precedence="next"/><link rel="stylesheet" href="/_next/static/immutable/chunks/287l5xq35imjj.css" data-precedence="next"/><link rel="stylesheet" href="/_next/static/immutable/chunks/17oghy4n4g9qf.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/immutable/chunks/36baba7il59p9.js"/><script src="/_next/static/immutable/chunks/0rqyi6omosdiy.js" async=""></script><script src="/_next/static/immutable/chunks/2nqiqj-lrk2yk.js" async=""></script><script src="/_next/static/immutable/chunks/turbopack-3rf5ek_t9sjl1.js" async=""></script><script src="/_next/static/immutable/chunks/1dq47j4p-xg3o.js" async=""></script><script src="/_next/static/immutable/chunks/2t-jlsga_9q2d.js" async=""></script><meta name="next-size-adjust" content=""/><meta name="sentry-trace" content="278a5d271f054c2b8eac5ee6086ba753-ae32a916d28afb71-0"/><meta name="baggage" content="sentry-environment=production,sentry-release=2b4a6e1a706336216cfd894d4b61dba9764d515a,sentry-public_key=217336c598020d63d1a44137ff8fdb71,sentry-trace_id=278a5d271f054c2b8eac5ee6086ba753,sentry-org_id=4509963614355457,sentry-sampled=false,sentry-sample_rand=0.9633698785639095,sentry-sample_rate=0.1"/><script src="/_next/static/immutable/chunks/0cz1d0mv5g_q7.js" noModule=""></script></head><body><div hidden=""><!--$--><!--/$--></div><div class="min-h-dvh px-6 pt-8 pb-8 font-mono text-[14px] leading-[1.6]"><pre class="mx-auto flex max-w-[1000px] items-start bg-transparent"><div class="text-text-tertiary border-fill-divider me-4 min-w-[40px] shrink-0 border-e pe-4 text-end select-none" aria-hidden="true"><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div><div>15</div><div>16</div><div>17</div><div>18</div><div>19</div><div>20</div><div>21</div><div>22</div><div>23</div><div>24</div><div>25</div><div>26</div><div>27</div><div>28</div><div>29</div><div>30</div><div>31</div><div>32</div><div>33</div><div>34</div><div>35</div><div>36</div><div>37</div><div>38</div><div>39</div><div>40</div><div>41</div><div>42</div><div>43</div><div>44</div><div>45</div><div>46</div><div>47</div><div>48</div><div>49</div><div>50</div><div>51</div><div>52</div><div>53</div><div>54</div><div>55</div><div>56</div><div>57</div><div>58</div><div>59</div><div>60</div><div>61</div><div>62</div><div>63</div><div>64</div><div>65</div><div>66</div><div>67</div><div>68</div><div>69</div><div>70</div><div>71</div><div>72</div><div>73</div><div>74</div><div>75</div><div>76</div><div>77</div><div>78</div><div>79</div><div>80</div><div>81</div><div>82</div><div>83</div><div>84</div><div>85</div><div>86</div><div>87</div><div>88</div><div>89</div><div>90</div><div>91</div><div>92</div><div>93</div><div>94</div><div>95</div><div>96</div><div>97</div><div>98</div><div>99</div><div>100</div><div>101</div><div>102</div><div>103</div><div>104</div><div>105</div><div>106</div><div>107</div><div>108</div><div>109</div><div>110</div><div>111</div><div>112</div><div>113</div><div>114</div><div>115</div><div>116</div><div>117</div><div>118</div><div>119</div><div>120</div><div>121</div><div>122</div><div>123</div><div>124</div><div>125</div><div>126</div><div>127</div><div>128</div><div>129</div><div>130</div><div>131</div><div>132</div><div>133</div><div>134</div><div>135</div><div>136</div><div>137</div><div>138</div><div>139</div><div>140</div><div>141</div><div>142</div><div>143</div><div>144</div><div>145</div><div>146</div><div>147</div><div>148</div><div>149</div><div>150</div><div>151</div><div>152</div><div>153</div><div>154</div><div>155</div><div>156</div><div>157</div><div>158</div><div>159</div><div>160</div><div>161</div><div>162</div><div>163</div><div>164</div><div>165</div><div>166</div><div>167</div><div>168</div><div>169</div><div>170</div><div>171</div><div>172</div><div>173</div><div>174</div><div>175</div><div>176</div><div>177</div><div>178</div><div>179</div><div>180</div><div>181</div><div>182</div><div>183</div><div>184</div><div>185</div><div>186</div><div>187</div><div>188</div><div>189</div><div>190</div><div>191</div><div>192</div><div>193</div><div>194</div><div>195</div><div>196</div><div>197</div><div>198</div><div>199</div><div>200</div><div>201</div><div>202</div><div>203</div><div>204</div><div>205</div><div>206</div><div>207</div><div>208</div><div>209</div><div>210</div><div>211</div><div>212</div><div>213</div><div>214</div><div>215</div><div>216</div><div>217</div><div>218</div><div>219</div><div>220</div><div>221</div><div>222</div><div>223</div><div>224</div><div>225</div><div>226</div><div>227</div><div>228</div><div>229</div><div>230</div><div>231</div><div>232</div><div>233</div><div>234</div><div>235</div><div>236</div><div>237</div><div>238</div><div>239</div><div>240</div><div>241</div><div>242</div><div>243</div><div>244</div><div>245</div><div>246</div><div>247</div><div>248</div><div>249</div><div>250</div><div>251</div><div>252</div><div>253</div><div>254</div><div>255</div><div>256</div><div>257</div><div>258</div><div>259</div><div>260</div><div>261</div><div>262</div><div>263</div><div>264</div><div>265</div><div>266</div><div>267</div><div>268</div><div>269</div><div>270</div><div>271</div><div>272</div></div><code class="block min-w-0 flex-1 overflow-x-auto whitespace-pre">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;Tickets - Yard Part 2 Sorting&lt;/title&gt;
+&lt;script src=&quot;https://cdn.tailwindcss.com&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/@supabase/supabase-js@2&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js&quot;&gt;&lt;/script&gt;
+&lt;style&gt;body{font-family: Inter, system-ui, sans-serif}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&quot;bg-slate-50 min-h-screen&quot;&gt;
+&lt;header class=&quot;bg-slate-900 text-white p-4 sticky top-0 z-20&quot;&gt;
+  &lt;div class=&quot;max-w-6xl mx-auto flex justify-between items-center&quot;&gt;
+    &lt;h1 class=&quot;font-bold text-lg&quot;&gt;♻️ Tickets &lt;span class=&quot;text-xs bg-blue-600 px-2 py-1 rounded ml-2&quot;&gt;YARD P2 SORTING&lt;/span&gt;&lt;/h1&gt;
+    &lt;div class=&quot;flex gap-2 text-xs&quot;&gt;
+      &lt;span id=&quot;onlineStatus&quot; class=&quot;px-2 py-1 rounded bg-green-500&quot;&gt;Online&lt;/span&gt;
+      &lt;span id=&quot;offlineCount&quot; class=&quot;px-2 py-1 rounded bg-amber-500 hidden&quot;&gt;0 queued&lt;/span&gt;
+      &lt;button id=&quot;syncBtn&quot; class=&quot;px-2 py-1 rounded bg-white text-slate-900 hidden&quot;&gt;Sync Now&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/header&gt;
 
-<div class="max-w-6xl mx-auto p-4">
-  <!-- Tabs -->
-  <div class="flex gap-2 mb-6 overflow-x-auto">
-    <button data-tab="ordering" class="tab-btn px-4 py-2 rounded bg-white border">Ordering</button>
-    <button data-tab="maintenance" class="tab-btn px-4 py-2 rounded bg-white border">Maintenance</button>
-    <button data-tab="internal" class="tab-btn px-4 py-2 rounded bg-white border">Internal</button>
-    <button data-tab="yard" class="tab-btn px-4 py-2 rounded bg-slate-900 text-white">YARD</button>
-  </div>
+&lt;div class=&quot;max-w-6xl mx-auto p-4&quot;&gt;
+  &lt;div class=&quot;flex gap-2 mb-6 overflow-x-auto&quot;&gt;
+    &lt;button data-tab=&quot;ordering&quot; class=&quot;tab-btn px-4 py-2 rounded bg-white border&quot;&gt;Ordering&lt;/button&gt;
+    &lt;button data-tab=&quot;maintenance&quot; class=&quot;tab-btn px-4 py-2 rounded bg-white border&quot;&gt;Maintenance&lt;/button&gt;
+    &lt;button data-tab=&quot;internal&quot; class=&quot;tab-btn px-4 py-2 rounded bg-white border&quot;&gt;Internal&lt;/button&gt;
+    &lt;button data-tab=&quot;yard&quot; class=&quot;tab-btn px-4 py-2 rounded bg-slate-900 text-white&quot;&gt;YARD&lt;/button&gt;
+  &lt;/div&gt;
 
-  <!-- Ordering/Maint/Internal placeholder -->
-  <div id="tab-ordering" class="tab-panel hidden"><div class="bg-white p-6 rounded shadow">Ordering module - existing tickets work as before</div></div>
-  <div id="tab-maintenance" class="tab-panel hidden"><div class="bg-white p-6 rounded shadow">Maintenance module</div></div>
-  <div id="tab-internal" class="tab-panel hidden"><div class="bg-white p-6 rounded shadow">Internal module</div></div>
+  &lt;div id=&quot;tab-ordering&quot; class=&quot;tab-panel hidden&quot;&gt;&lt;div class=&quot;bg-white p-6 rounded shadow&quot;&gt;Ordering module&lt;/div&gt;&lt;/div&gt;
+  &lt;div id=&quot;tab-maintenance&quot; class=&quot;tab-panel hidden&quot;&gt;&lt;div class=&quot;bg-white p-6 rounded shadow&quot;&gt;Maintenance module&lt;/div&gt;&lt;/div&gt;
+  &lt;div id=&quot;tab-internal&quot; class=&quot;tab-panel hidden&quot;&gt;&lt;div class=&quot;bg-white p-6 rounded shadow&quot;&gt;Internal module&lt;/div&gt;&lt;/div&gt;
 
-  <!-- YARD TAB -->
-  <div id="tab-yard" class="tab-panel">
-    <div class="flex gap-2 mb-4">
-      <button class="px-3 py-1.5 bg-slate-900 text-white rounded text-sm">1. Inbound</button>
-      <button disabled class="px-3 py-1.5 bg-white border rounded text-sm opacity-40">2. Sorting (next)</button>
-      <button disabled class="px-3 py-1.5 bg-white border rounded text-sm opacity-40">3. Refining</button>
-      <button disabled class="px-3 py-1.5 bg-white border rounded text-sm opacity-40">4. Storage</button>
-      <button disabled class="px-3 py-1.5 bg-white border rounded text-sm opacity-40">5. Outbound</button>
-    </div>
+  &lt;div id=&quot;tab-yard&quot; class=&quot;tab-panel&quot;&gt;
+    &lt;div class=&quot;flex gap-2 mb-4 overflow-x-auto&quot;&gt;
+      &lt;button data-yard=&quot;inbound&quot; class=&quot;yard-tab px-3 py-1.5 bg-white border rounded text-sm&quot;&gt;1. Inbound&lt;/button&gt;
+      &lt;button data-yard=&quot;sorting&quot; class=&quot;yard-tab px-3 py-1.5 bg-slate-900 text-white rounded text-sm&quot;&gt;2. Sorting&lt;/button&gt;
+      &lt;button disabled class=&quot;px-3 py-1.5 bg-white border rounded text-sm opacity-40&quot;&gt;3. Refining&lt;/button&gt;
+      &lt;button disabled class=&quot;px-3 py-1.5 bg-white border rounded text-sm opacity-40&quot;&gt;4. Storage&lt;/button&gt;
+      &lt;button disabled class=&quot;px-3 py-1.5 bg-white border rounded text-sm opacity-40&quot;&gt;5. Outbound&lt;/button&gt;
+    &lt;/div&gt;
 
-    <div class="grid md:grid-cols-2 gap-6">
-      <!-- Form -->
-      <div class="bg-white rounded-xl shadow p-5">
-        <h2 class="font-bold text-lg mb-1">Yard Inbound - YB-IN-xxx</h2>
-        <p class="text-xs text-slate-500 mb-4">Receiver only • 3 scales only • Photo required</p>
-        
-        <form id="inboundForm" class="space-y-4">
-          <div>
-            <label class="text-sm font-medium">Scale *</label>
-            <select id="scale_id" required class="w-full mt-1 border rounded p-2.5">
-              <option value="">Select scale</option>
-              <option value="SCALE-1">SCALE-1</option>
-              <option value="SCALE-2">SCALE-2</option>
-              <option value="SCALE-3">SCALE-3</option>
-            </select>
-          </div>
+    &lt;!-- INBOUND PANEL --&gt;
+    &lt;div id=&quot;yard-inbound&quot; class=&quot;yard-panel hidden&quot;&gt;
+      &lt;div class=&quot;grid md:grid-cols-2 gap-6&quot;&gt;
+        &lt;div class=&quot;bg-white rounded-xl shadow p-5&quot;&gt;
+          &lt;h2 class=&quot;font-bold text-lg mb-1&quot;&gt;Yard Inbound - YB-IN&lt;/h2&gt;
+          &lt;p class=&quot;text-xs text-slate-500 mb-4&quot;&gt;Receiver • 3 scales • Photo required&lt;/p&gt;
+          &lt;form id=&quot;inboundForm&quot; class=&quot;space-y-4&quot;&gt;
+            &lt;div&gt;&lt;label class=&quot;text-sm font-medium&quot;&gt;Scale *&lt;/label&gt;&lt;select id=&quot;scale_id&quot; required class=&quot;w-full mt-1 border rounded p-2.5&quot;&gt;&lt;option value=&quot;&quot;&gt;Select scale&lt;/option&gt;&lt;option value=&quot;SCALE-1&quot;&gt;SCALE-1&lt;/option&gt;&lt;option value=&quot;SCALE-2&quot;&gt;SCALE-2&lt;/option&gt;&lt;option value=&quot;SCALE-3&quot;&gt;SCALE-3&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;
+            &lt;div&gt;&lt;label class=&quot;text-sm font-medium&quot;&gt;Weight (kg) *&lt;/label&gt;&lt;input id=&quot;weight_kg&quot; type=&quot;number&quot; step=&quot;0.01&quot; required placeholder=&quot;e.g. 245.50&quot; class=&quot;w-full mt-1 border rounded p-2.5&quot;&gt;&lt;/div&gt;
+            &lt;div&gt;&lt;label class=&quot;text-sm font-medium&quot;&gt;Scale QR&lt;/label&gt;&lt;div class=&quot;flex gap-2 mt-1&quot;&gt;&lt;input id=&quot;scale_qr&quot; type=&quot;text&quot; placeholder=&quot;Scan or type QR&quot; class=&quot;flex-1 border rounded p-2.5&quot;&gt;&lt;button type=&quot;button&quot; id=&quot;qrBtn&quot; class=&quot;px-3 py-2 bg-slate-900 text-white rounded text-sm&quot;&gt;📷 Scan&lt;/button&gt;&lt;/div&gt;&lt;div id=&quot;qrReader&quot; class=&quot;mt-2 hidden&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;div&gt;&lt;label class=&quot;text-sm font-medium&quot;&gt;Scale Photo *&lt;/label&gt;&lt;input id=&quot;photo&quot; type=&quot;file&quot; accept=&quot;image/*&quot; capture=&quot;environment&quot; required class=&quot;w-full mt-1 border rounded p-2&quot;&gt;&lt;img id=&quot;photoPreview&quot; class=&quot;mt-2 rounded hidden max-h-48 w-full object-cover&quot;&gt;&lt;/div&gt;
+            &lt;button type=&quot;submit&quot; class=&quot;w-full bg-green-600 text-white py-3 rounded font-bold&quot;&gt;SAVE YB-IN Ticket&lt;/button&gt;
+          &lt;/form&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;bg-white rounded-xl shadow p-5&quot;&gt;&lt;div class=&quot;flex justify-between items-center mb-3&quot;&gt;&lt;h3 class=&quot;font-bold&quot;&gt;Recent Inbounds&lt;/h3&gt;&lt;button id=&quot;refreshInboundBtn&quot; class=&quot;text-xs px-2 py-1 border rounded&quot;&gt;Refresh&lt;/button&gt;&lt;/div&gt;&lt;div id=&quot;inboundList&quot; class=&quot;space-y-2 max-h-[600px] overflow-auto&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
 
-          <div>
-            <label class="text-sm font-medium">Weight (kg) *</label>
-            <input id="weight_kg" type="number" step="0.01" required placeholder="e.g. 245.50" class="w-full mt-1 border rounded p-2.5">
-          </div>
+    &lt;!-- SORTING PANEL --&gt;
+    &lt;div id=&quot;yard-sorting&quot; class=&quot;yard-panel&quot;&gt;
+      &lt;div class=&quot;grid md:grid-cols-2 gap-6&quot;&gt;
+        &lt;div class=&quot;bg-white rounded-xl shadow p-5&quot;&gt;
+          &lt;h2 class=&quot;font-bold text-lg mb-1&quot;&gt;Sorting - YB-SORT&lt;/h2&gt;
+          &lt;p class=&quot;text-xs text-slate-500 mb-4&quot;&gt;Must link to YB-IN • Enforces Inbound = Waste + Clean + &amp;lt;2% loss&lt;/p&gt;
+          &lt;form id=&quot;sortingForm&quot; class=&quot;space-y-4&quot;&gt;
+            &lt;div&gt;
+              &lt;label class=&quot;text-sm font-medium&quot;&gt;Select Inbound Ticket YB-IN-xxx *&lt;/label&gt;
+              &lt;select id=&quot;inbound_select&quot; required class=&quot;w-full mt-1 border rounded p-2.5&quot;&gt;&lt;option value=&quot;&quot;&gt;Loading YB-IN tickets...&lt;/option&gt;&lt;/select&gt;
+              &lt;div id=&quot;inboundInfo&quot; class=&quot;mt-2 text-xs bg-slate-50 p-2 rounded hidden&quot;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;grid grid-cols-2 gap-3&quot;&gt;
+              &lt;div&gt;&lt;label class=&quot;text-sm font-medium&quot;&gt;Waste (kg) *&lt;/label&gt;&lt;input id=&quot;waste_kg&quot; type=&quot;number&quot; step=&quot;0.01&quot; required placeholder=&quot;0.00&quot; class=&quot;w-full mt-1 border rounded p-2.5&quot;&gt;&lt;/div&gt;
+              &lt;div&gt;&lt;label class=&quot;text-sm font-medium&quot;&gt;Clean (kg) *&lt;/label&gt;&lt;input id=&quot;clean_kg&quot; type=&quot;number&quot; step=&quot;0.01&quot; required placeholder=&quot;0.00&quot; class=&quot;w-full mt-1 border rounded p-2.5&quot;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div id=&quot;calcBox&quot; class=&quot;p-3 rounded border-2 border-slate-200 bg-slate-50&quot;&gt;
+              &lt;div class=&quot;text-xs space-y-1&quot;&gt;
+                &lt;div class=&quot;flex justify-between&quot;&gt;&lt;span&gt;Inbound:&lt;/span&gt;&lt;span id=&quot;calcInbound&quot; class=&quot;font-bold&quot;&gt;-&lt;/span&gt;&lt;/div&gt;
+                &lt;div class=&quot;flex justify-between&quot;&gt;&lt;span&gt;Waste + Clean:&lt;/span&gt;&lt;span id=&quot;calcSum&quot;&gt;-&lt;/span&gt;&lt;/div&gt;
+                &lt;div class=&quot;flex justify-between&quot;&gt;&lt;span&gt;Loss:&lt;/span&gt;&lt;span id=&quot;calcLoss&quot;&gt;-&lt;/span&gt;&lt;/div&gt;
+                &lt;div class=&quot;flex justify-between text-sm mt-2 pt-2 border-t&quot;&gt;&lt;span&gt;Loss %:&lt;/span&gt;&lt;span id=&quot;calcPct&quot; class=&quot;font-bold text-lg&quot;&gt;-&lt;/span&gt;&lt;/div&gt;
+                &lt;div id=&quot;calcStatus&quot; class=&quot;mt-2 text-xs font-bold p-2 rounded text-center&quot;&gt;Enter Waste + Clean&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;button id=&quot;saveSortBtn&quot; type=&quot;submit&quot; disabled class=&quot;w-full bg-slate-300 text-white py-3 rounded font-bold&quot;&gt;Enter weights to validate&lt;/button&gt;
+          &lt;/form&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;bg-white rounded-xl shadow p-5&quot;&gt;&lt;div class=&quot;flex justify-between items-center mb-3&quot;&gt;&lt;h3 class=&quot;font-bold&quot;&gt;Recent Sorting&lt;/h3&gt;&lt;button id=&quot;refreshSortBtn&quot; class=&quot;text-xs px-2 py-1 border rounded&quot;&gt;Refresh&lt;/button&gt;&lt;/div&gt;&lt;div id=&quot;sortingList&quot; class=&quot;space-y-2 max-h-[600px] overflow-auto&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 
-          <div>
-            <label class="text-sm font-medium">Scale QR / Ticket QR</label>
-            <div class="flex gap-2 mt-1">
-              <input id="scale_qr" type="text" placeholder="Scan or type QR" class="flex-1 border rounded p-2.5">
-              <button type="button" id="qrBtn" class="px-3 py-2 bg-slate-900 text-white rounded text-sm">📷 Scan</button>
-            </div>
-            <div id="qrReader" class="mt-2 hidden"></div>
-          </div>
-
-          <div>
-            <label class="text-sm font-medium">Scale Photo * (proof)</label>
-            <input id="photo" type="file" accept="image/*" capture="environment" required class="w-full mt-1 border rounded p-2">
-            <img id="photoPreview" class="mt-2 rounded hidden max-h-48 w-full object-cover">
-          </div>
-
-          <button type="submit" class="w-full bg-green-600 text-white py-3 rounded font-bold">SAVE YB-IN Ticket</button>
-          <p class="text-xs text-slate-400 text-center">If offline, it will queue and auto-sync later</p>
-        </form>
-      </div>
-
-      <!-- List -->
-      <div class="bg-white rounded-xl shadow p-5">
-        <div class="flex justify-between items-center mb-3">
-          <h3 class="font-bold">Recent Inbounds</h3>
-          <button id="refreshBtn" class="text-xs px-2 py-1 border rounded">Refresh</button>
-        </div>
-        <div id="inboundList" class="space-y-2 max-h-[600px] overflow-auto"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-// === CONFIG - PASTE YOUR SUPABASE KEYS IF NEEDED ===
-const SUPABASE_URL = 'https://odthhfckgkozetzcbglg.supabase.co'; // replace if different
-const SUPABASE_ANON = 'sb_publishable_rmo6F4vWE0fJARhrElXshw_mRCjRzch'; // placeholder - uses your existing project's anon key from previous setup, replace with real one
+&lt;script&gt;
+const SUPABASE_URL = &#x27;https://odthhfckgkozetzcbglg.supabase.co&#x27;;
+const SUPABASE_ANON = &#x27;sb_publishable_rmo6F4vWE0fJARhrElXshw_mRCjRzch&#x27;;
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
-// Tab switching
-document.querySelectorAll('.tab-btn').forEach(b=>{
-  b.addEventListener('click',()=>{
-    document.querySelectorAll('.tab-btn').forEach(x=>x.className='tab-btn px-4 py-2 rounded bg-white border');
-    b.className='tab-btn px-4 py-2 rounded bg-slate-900 text-white';
-    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.add('hidden'));
-    document.getElementById('tab-'+b.dataset.tab).classList.remove('hidden');
+// Tabs
+document.querySelectorAll(&#x27;.tab-btn&#x27;).forEach(b=&gt;{
+  b.addEventListener(&#x27;click&#x27;,()=&gt;{
+    document.querySelectorAll(&#x27;.tab-btn&#x27;).forEach(x=&gt;x.className=&#x27;tab-btn px-4 py-2 rounded bg-white border&#x27;);
+    b.className=&#x27;tab-btn px-4 py-2 rounded bg-slate-900 text-white&#x27;;
+    document.querySelectorAll(&#x27;.tab-panel&#x27;).forEach(p=&gt;p.classList.add(&#x27;hidden&#x27;));
+    document.getElementById(&#x27;tab-&#x27;+b.dataset.tab).classList.remove(&#x27;hidden&#x27;);
+  })
+});
+document.querySelectorAll(&#x27;.yard-tab&#x27;).forEach(b=&gt;{
+  b.addEventListener(&#x27;click&#x27;,()=&gt;{
+    document.querySelectorAll(&#x27;.yard-tab&#x27;).forEach(x=&gt;x.className=&#x27;yard-tab px-3 py-1.5 bg-white border rounded text-sm&#x27;);
+    b.className=&#x27;yard-tab px-3 py-1.5 bg-slate-900 text-white rounded text-sm&#x27;;
+    document.querySelectorAll(&#x27;.yard-panel&#x27;).forEach(p=&gt;p.classList.add(&#x27;hidden&#x27;));
+    document.getElementById(&#x27;yard-&#x27;+b.dataset.yard).classList.remove(&#x27;hidden&#x27;);
   })
 });
 
-// Online/offline
-const offlineKey = 'yard_offline_queue';
-function getQueue(){ try{ return JSON.parse(localStorage.getItem(offlineKey)||'[]')}catch{return []}}
-function setQueue(q){ localStorage.setItem(offlineKey, JSON.stringify(q)); updateOfflineUI();}
+// Offline
+const offlineKey=&#x27;yard_offline_queue&#x27;; const offlineKey2=&#x27;yard_sort_offline_queue&#x27;;
+function getQueue(k){ try{ return JSON.parse(localStorage.getItem(k)||&#x27;[]&#x27;)}catch{return []}}
+function setQueue(k,q){ localStorage.setItem(k, JSON.stringify(q)); updateOfflineUI();}
 function updateOfflineUI(){
-  const q=getQueue();
-  const el=document.getElementById('offlineCount');
-  const sync=document.getElementById('syncBtn');
-  if(q.length>0){ el.textContent=q.length+' queued'; el.classList.remove('hidden'); sync.classList.remove('hidden'); }
-  else { el.classList.add('hidden'); sync.classList.add('hidden'); }
+  const q1=getQueue(offlineKey); const q2=getQueue(offlineKey2); const total=q1.length+q2.length;
+  const el=document.getElementById(&#x27;offlineCount&#x27;); const sync=document.getElementById(&#x27;syncBtn&#x27;);
+  if(total&gt;0){ el.textContent=total+&#x27; queued&#x27;; el.classList.remove(&#x27;hidden&#x27;); sync.classList.remove(&#x27;hidden&#x27;); } else { el.classList.add(&#x27;hidden&#x27;); sync.classList.add(&#x27;hidden&#x27;); }
 }
 function updateOnline(){
   const online=navigator.onLine;
-  document.getElementById('onlineStatus').textContent=online?'Online':'Offline';
-  document.getElementById('onlineStatus').className='px-2 py-1 rounded text-xs '+(online?'bg-green-500':'bg-red-500');
-  if(online) syncQueue();
+  document.getElementById(&#x27;onlineStatus&#x27;).textContent=online?&#x27;Online&#x27;:&#x27;Offline&#x27;;
+  document.getElementById(&#x27;onlineStatus&#x27;).className=&#x27;px-2 py-1 rounded text-xs &#x27;+(online?&#x27;bg-green-500&#x27;:&#x27;bg-red-500&#x27;);
+  if(online) { syncQueue(); syncSortQueue(); }
 }
-window.addEventListener('online', updateOnline);
-window.addEventListener('offline', updateOnline);
+window.addEventListener(&#x27;online&#x27;, updateOnline); window.addEventListener(&#x27;offline&#x27;, updateOnline);
 updateOnline(); updateOfflineUI();
 
-// Photo preview
-document.getElementById('photo').addEventListener('change', e=>{
+// Inbound (same as P1)
+document.getElementById(&#x27;photo&#x27;)?.addEventListener(&#x27;change&#x27;, e=&gt;{
   const f=e.target.files[0]; if(!f) return;
-  const img=document.getElementById('photoPreview');
-  img.src=URL.createObjectURL(f); img.classList.remove('hidden');
+  const img=document.getElementById(&#x27;photoPreview&#x27;); img.src=URL.createObjectURL(f); img.classList.remove(&#x27;hidden&#x27;);
 });
-
-// QR Scanner
 let html5Qr;
-document.getElementById('qrBtn').addEventListener('click', async ()=>{
-  const reader=document.getElementById('qrReader');
-  reader.classList.toggle('hidden');
-  if(reader.classList.contains('hidden')){ if(html5Qr){ await html5Qr.stop(); } return; }
-  html5Qr = new Html5Qrcode("qrReader");
-  try{
-    await html5Qr.start({ facingMode: "environment" }, { fps: 10, qrbox: 250 },
-      (decoded)=>{
-        document.getElementById('scale_qr').value=decoded;
-        html5Qr.stop(); reader.classList.add('hidden');
-      }, ()=>{}
-    );
-  }catch(err){ alert('Camera error: '+err); }
+document.getElementById(&#x27;qrBtn&#x27;)?.addEventListener(&#x27;click&#x27;, async ()=&gt;{
+  const reader=document.getElementById(&#x27;qrReader&#x27;); reader.classList.toggle(&#x27;hidden&#x27;);
+  if(reader.classList.contains(&#x27;hidden&#x27;)){ if(html5Qr){ await html5Qr.stop(); } return; }
+  html5Qr = new Html5Qrcode(&quot;qrReader&quot;);
+  try{ await html5Qr.start({ facingMode: &quot;environment&quot; }, { fps: 10, qrbox: 250 }, (decoded)=&gt;{ document.getElementById(&#x27;scale_qr&#x27;).value=decoded; html5Qr.stop(); reader.classList.add(&#x27;hidden&#x27;); }, ()=&gt;{}); }catch(err){ alert(&#x27;Camera error: &#x27;+err); }
 });
-
-// Save
-document.getElementById('inboundForm').addEventListener('submit', async (e)=>{
+document.getElementById(&#x27;inboundForm&#x27;)?.addEventListener(&#x27;submit&#x27;, async (e)=&gt;{
   e.preventDefault();
-  const payload = {
-    scale_id: document.getElementById('scale_id').value,
-    weight_kg: parseFloat(document.getElementById('weight_kg').value),
-    scale_qr: document.getElementById('scale_qr').value || null,
-    _photoFile: document.getElementById('photo').files[0]
-  };
-  if(!payload._photoFile){ alert('Scale photo required'); return; }
-
+  const payload={ scale_id: document.getElementById(&#x27;scale_id&#x27;).value, weight_kg: parseFloat(document.getElementById(&#x27;weight_kg&#x27;).value), scale_qr: document.getElementById(&#x27;scale_qr&#x27;).value||null, _photoFile: document.getElementById(&#x27;photo&#x27;).files[0] };
   if(!navigator.onLine){
-    const q=getQueue(); q.push({ ...payload, _photoName: payload._photoFile.name, localId: Date.now(), _photoBase64: await fileToBase64(payload._photoFile) });
-    setQueue(q); alert('Offline - queued. Will sync when online.'); e.target.reset(); document.getElementById('photoPreview').classList.add('hidden'); loadList();
-    return;
+    const toStore={ ...payload, _photoName: payload._photoFile.name, _photoBase64: await fileToBase64(payload._photoFile) };
+    const q=getQueue(offlineKey); q.push(toStore); setQueue(offlineKey,q); alert(&#x27;Offline - queued&#x27;); e.target.reset(); loadInbound(); return;
   }
-  await saveInbound(payload);
-  e.target.reset(); document.getElementById('photoPreview').classList.add('hidden');
+  await saveInbound(payload); e.target.reset(); document.getElementById(&#x27;photoPreview&#x27;)?.classList.add(&#x27;hidden&#x27;);
 });
-
-async function fileToBase64(file){
-  return new Promise(res=>{
-    const r=new FileReader(); r.onload=()=>res(r.result); r.readAsDataURL(file);
-  });
-}
-function base64ToFile(b64, name){
-  const arr=b64.split(','), mime=arr[0].match(/:(.*?);/)[1], bstr=atob(arr[1]);
-  let n=bstr.length, u8=new Uint8Array(n); while(n--) u8[n]=bstr.charCodeAt(n);
-  return new File([u8], name, {type:mime});
-}
-
+async function fileToBase64(file){ return new Promise(res=&gt;{ const r=new FileReader(); r.onload=()=&gt;res(r.result); r.readAsDataURL(file); }); }
+function base64ToFile(b64,name){ const arr=b64.split(&#x27;,&#x27;), mime=arr[0].match(/:(.*?);/)[1], bstr=atob(arr[1]); let n=bstr.length, u8=new Uint8Array(n); while(n--) u8[n]=bstr.charCodeAt(n); return new File([u8], name, {type:mime}); }
 async function saveInbound(data){
   try{
-    // upload photo
-    let photoFile = data._photoFile || (data._photoBase64 ? base64ToFile(data._photoBase64, data._photoName||'scale.jpg') : null);
-    let photoUrl = null;
-    if(photoFile){
-      const fileName = Date.now()+'_'+photoFile.name;
-      const { error: upErr } = await supabase.storage.from('yard-photos').upload(fileName, photoFile);
-      if(upErr) throw upErr;
-      const { data: pub } = supabase.storage.from('yard-photos').getPublicUrl(fileName);
-      photoUrl = pub.publicUrl;
-    }
-    const { data: inserted, error } = await supabase.from('yard_inbound').insert({
-      scale_id: data.scale_id,
-      weight_kg: data.weight_kg,
-      scale_qr: data.scale_qr,
-      photo_url: photoUrl
-    }).select().single();
-    if(error) throw error;
-    alert('Saved '+inserted.ticket_no);
-    loadList();
-  }catch(err){
-    console.error(err);
-    alert('Save failed: '+err.message+' - queued offline');
-    const q=getQueue(); q.push(data); setQueue(q);
-  }
+    let photoFile=data._photoFile || (data._photoBase64?base64ToFile(data._photoBase64,data._photoName||&#x27;scale.jpg&#x27;):null);
+    let photoUrl=null;
+    if(photoFile){ const fileName=Date.now()+&#x27;_&#x27;+photoFile.name; const {error:upErr}=await supabase.storage.from(&#x27;yard-photos&#x27;).upload(fileName, photoFile); if(upErr) throw upErr; const {data:pub}=supabase.storage.from(&#x27;yard-photos&#x27;).getPublicUrl(fileName); photoUrl=pub.publicUrl; }
+    const {data:inserted,error}=await supabase.from(&#x27;yard_inbound&#x27;).insert({ scale_id:data.scale_id, weight_kg:data.weight_kg, scale_qr:data.scale_qr, photo_url:photoUrl }).select().single();
+    if(error) throw error; alert(&#x27;Saved &#x27;+inserted.ticket_no); loadInbound(); loadInboundSelect();
+  }catch(err){ console.error(err); alert(&#x27;Save failed: &#x27;+err.message+&#x27; - queued&#x27;); const q=getQueue(offlineKey); q.push(data); setQueue(offlineKey,q); }
 }
-
 async function syncQueue(){
-  const q=getQueue(); if(q.length===0) return;
-  document.getElementById('syncBtn').textContent='Syncing '+q.length+'...';
+  const q=getQueue(offlineKey); if(q.length===0) return;
+  document.getElementById(&#x27;syncBtn&#x27;).textContent=&#x27;Syncing &#x27;+q.length+&#x27;...&#x27;;
   const remaining=[];
-  for(const item of q){
-    try{ await saveInbound(item); } catch{ remaining.push(item); }
-  }
-  setQueue(remaining);
-  document.getElementById('syncBtn').textContent='Sync Now';
-  loadList();
+  for(const item of q){ try{ await saveInbound(item); } catch{ remaining.push(item); } }
+  setQueue(offlineKey,remaining); document.getElementById(&#x27;syncBtn&#x27;).textContent=&#x27;Sync Now&#x27;; loadInbound(); loadInboundSelect();
 }
-document.getElementById('syncBtn').addEventListener('click', syncQueue);
+async function loadInbound(){
+  const {data}=await supabase.from(&#x27;yard_inbound&#x27;).select(&#x27;*&#x27;).order(&#x27;created_at&#x27;,{ascending:false}).limit(20);
+  const list=document.getElementById(&#x27;inboundList&#x27;);
+  if(!data||data.length===0){ list.innerHTML=&#x27;&lt;p class=&quot;text-xs text-slate-400&quot;&gt;No tickets yet&lt;/p&gt;&#x27;; return; }
+  list.innerHTML=data.map(r=&gt;`&lt;div class=&quot;border rounded p-3 text-sm&quot;&gt;&lt;div class=&quot;flex justify-between&quot;&gt;&lt;span class=&quot;font-bold&quot;&gt;${r.ticket_no}&lt;/span&gt;&lt;span class=&quot;text-xs bg-slate-100 px-2 py-0.5 rounded&quot;&gt;${r.scale_id}&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;text-xs text-slate-600 mt-1&quot;&gt;${r.weight_kg} kg • QR: ${r.scale_qr||&#x27;-&#x27;} • ${new Date(r.created_at).toLocaleString()}&lt;/div&gt;${r.photo_url?`&lt;img src=&quot;${r.photo_url}&quot; class=&quot;mt-2 rounded max-h-32 w-full object-cover&quot;&gt;`:&#x27;&#x27;}&lt;/div&gt;`).join(&#x27;&#x27;);
+}
+document.getElementById(&#x27;refreshInboundBtn&#x27;)?.addEventListener(&#x27;click&#x27;, loadInbound);
 
-async function loadList(){
-  const { data } = await supabase.from('yard_inbound').select('*').order('created_at',{ascending:false}).limit(20);
-  const list=document.getElementById('inboundList');
-  if(!data || data.length===0){ list.innerHTML='<p class="text-xs text-slate-400">No tickets yet</p>'; return; }
-  list.innerHTML=data.map(r=>`
-    <div class="border rounded p-3 text-sm">
-      <div class="flex justify-between"><span class="font-bold">${r.ticket_no}</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded">${r.scale_id}</span></div>
-      <div class="text-xs text-slate-600 mt-1">${r.weight_kg} kg • QR: ${r.scale_qr||'-'} • ${new Date(r.created_at).toLocaleString()}</div>
-      ${r.photo_url?`<img src="${r.photo_url}" class="mt-2 rounded max-h-32 w-full object-cover">`:''}
-    </div>
-  `).join('');
+// Sorting logic
+let inboundMap={};
+async function loadInboundSelect(){
+  const {data}=await supabase.from(&#x27;yard_inbound&#x27;).select(&#x27;id,ticket_no,weight_kg,scale_id&#x27;).order(&#x27;created_at&#x27;,{ascending:false}).limit(100);
+  const sel=document.getElementById(&#x27;inbound_select&#x27;);
+  if(!data||data.length===0){ sel.innerHTML=&#x27;&lt;option value=&quot;&quot;&gt;No YB-IN tickets yet - create one first&lt;/option&gt;&#x27;; return; }
+  // filter out already sorted? show all for now but mark sorted
+  const {data:sorted}=await supabase.from(&#x27;yard_sorting&#x27;).select(&#x27;inbound_id&#x27;);
+  const sortedIds=new Set((sorted||[]).map(s=&gt;s.inbound_id));
+  sel.innerHTML=&#x27;&lt;option value=&quot;&quot;&gt;Select YB-IN ticket&lt;/option&gt;&#x27;+data.map(r=&gt;{
+    const isSorted=sortedIds.has(r.id);
+    inboundMap[r.id]=r;
+    return `&lt;option value=&quot;${r.id}&quot; ${isSorted?&#x27;disabled&#x27;:&#x27;&#x27;}&gt;${r.ticket_no} - ${r.weight_kg}kg ${r.scale_id} ${isSorted?&#x27;(already sorted)&#x27;:&#x27;&#x27;}&lt;/option&gt;`;
+  }).join(&#x27;&#x27;);
+  // also store in map
+  data.forEach(r=&gt;{inboundMap[r.ticket_no]=r; inboundMap[r.id]=r;});
 }
-document.getElementById('refreshBtn').addEventListener('click', loadList);
-loadList();
-</script>
-</body>
-</html>
+document.getElementById(&#x27;inbound_select&#x27;)?.addEventListener(&#x27;change&#x27;, e=&gt;{
+  const id=e.target.value; const r=inboundMap[id];
+  const info=document.getElementById(&#x27;inboundInfo&#x27;);
+  if(!r){ info.classList.add(&#x27;hidden&#x27;); calc(); return; }
+  info.classList.remove(&#x27;hidden&#x27;);
+  info.innerHTML=`&lt;b&gt;${r.ticket_no}&lt;/b&gt; - Inbound Weight: &lt;b&gt;${r.weight_kg} kg&lt;/b&gt; from ${r.scale_id}`;
+  calc();
+});
+function calc(){
+  const sel=document.getElementById(&#x27;inbound_select&#x27;).value;
+  const inbound = inboundMap[sel]?.weight_kg || 0;
+  const waste=parseFloat(document.getElementById(&#x27;waste_kg&#x27;).value)||0;
+  const clean=parseFloat(document.getElementById(&#x27;clean_kg&#x27;).value)||0;
+  const sum=waste+clean;
+  const loss=inbound-sum;
+  const pct=inbound&gt;0?(loss/inbound*100):0;
+  document.getElementById(&#x27;calcInbound&#x27;).textContent=inbound?inbound.toFixed(2)+&#x27; kg&#x27;:&#x27;-&#x27;;
+  document.getElementById(&#x27;calcSum&#x27;).textContent=sum.toFixed(2)+&#x27; kg&#x27;;
+  document.getElementById(&#x27;calcLoss&#x27;).textContent=loss.toFixed(2)+&#x27; kg&#x27;;
+  document.getElementById(&#x27;calcPct&#x27;).textContent=pct.toFixed(2)+&#x27; %&#x27;;
+  const status=document.getElementById(&#x27;calcStatus&#x27;);
+  const btn=document.getElementById(&#x27;saveSortBtn&#x27;);
+  if(inbound===0){ status.textContent=&#x27;Select YB-IN first&#x27;; status.className=&#x27;mt-2 text-xs font-bold p-2 rounded text-center bg-slate-100&#x27;; btn.disabled=true; btn.className=&#x27;w-full bg-slate-300 text-white py-3 rounded font-bold&#x27;; btn.textContent=&#x27;Select YB-IN first&#x27;; return; }
+  if(sum===0){ status.textContent=&#x27;Enter Waste + Clean&#x27;; status.className=&#x27;mt-2 text-xs font-bold p-2 rounded text-center bg-slate-100&#x27;; btn.disabled=true; btn.className=&#x27;w-full bg-slate-300 text-white py-3 rounded font-bold&#x27;; return; }
+  if(loss&lt;0){ status.textContent=&#x27;❌ Waste + Clean &gt; Inbound! Reduce.&#x27;; status.className=&#x27;mt-2 text-xs font-bold p-2 rounded text-center bg-red-100 text-red-700&#x27;; btn.disabled=true; btn.className=&#x27;w-full bg-red-300 text-white py-3 rounded font-bold&#x27;; btn.textContent=&#x27;Invalid - Fix weights&#x27;; return; }
+  if(pct&gt;=2){ status.textContent=`❌ Loss ${pct.toFixed(2)}% &gt;=2% - NOT ALLOWED`; status.className=&#x27;mt-2 text-xs font-bold p-2 rounded text-center bg-red-100 text-red-700&#x27;; btn.disabled=true; btn.className=&#x27;w-full bg-red-400 text-white py-3 rounded font-bold&#x27;; btn.textContent=`Loss too high (${pct.toFixed(2)}%)`; return; }
+  status.textContent=`✅ OK - Loss ${pct.toFixed(2)}% &lt;2% - Can save`; status.className=&#x27;mt-2 text-xs font-bold p-2 rounded text-center bg-green-100 text-green-700&#x27;; btn.disabled=false; btn.className=&#x27;w-full bg-green-600 text-white py-3 rounded font-bold&#x27;; btn.textContent=`SAVE YB-SORT - Loss ${pct.toFixed(2)}%`;
+}
+document.getElementById(&#x27;waste_kg&#x27;)?.addEventListener(&#x27;input&#x27;, calc);
+document.getElementById(&#x27;clean_kg&#x27;)?.addEventListener(&#x27;input&#x27;, calc);
+
+document.getElementById(&#x27;sortingForm&#x27;)?.addEventListener(&#x27;submit&#x27;, async e=&gt;{
+  e.preventDefault();
+  const inboundId=document.getElementById(&#x27;inbound_select&#x27;).value;
+  const inboundRec=inboundMap[inboundId];
+  if(!inboundRec){ alert(&#x27;Select inbound&#x27;); return; }
+  const payload={ inbound_id: inboundId, inbound_ticket_no: inboundRec.ticket_no, inbound_kg: inboundRec.weight_kg, waste_kg: parseFloat(document.getElementById(&#x27;waste_kg&#x27;).value), clean_kg: parseFloat(document.getElementById(&#x27;clean_kg&#x27;).value) };
+  if(!navigator.onLine){
+    const q=getQueue(offlineKey2); q.push(payload); setQueue(offlineKey2,q); alert(&#x27;Offline - sorting queued&#x27;); e.target.reset(); calc(); return;
+  }
+  await saveSorting(payload); e.target.reset(); document.getElementById(&#x27;inboundInfo&#x27;).classList.add(&#x27;hidden&#x27;); calc();
+});
+
+async function saveSorting(data){
+  try{
+    const {data:ins,error}=await supabase.from(&#x27;yard_sorting&#x27;).insert(data).select().single();
+    if(error) throw error;
+    alert(&#x27;Saved &#x27;+ins.ticket_no+&#x27; - Loss &#x27;+parseFloat(ins.loss_pct).toFixed(2)+&#x27;%&#x27;);
+    loadSorting(); loadInboundSelect();
+  }catch(err){ alert(&#x27;Save failed: &#x27;+err.message); console.error(err); }
+}
+async function syncSortQueue(){
+  const q=getQueue(offlineKey2); if(q.length===0) return;
+  const remaining=[];
+  for(const item of q){ try{ await saveSorting(item); } catch{ remaining.push(item); } }
+  setQueue(offlineKey2,remaining);
+}
+async function loadSorting(){
+  const {data}=await supabase.from(&#x27;yard_sorting&#x27;).select(&#x27;*&#x27;).order(&#x27;created_at&#x27;,{ascending:false}).limit(20);
+  const list=document.getElementById(&#x27;sortingList&#x27;);
+  if(!data||data.length===0){ list.innerHTML=&#x27;&lt;p class=&quot;text-xs text-slate-400&quot;&gt;No sorting yet&lt;/p&gt;&#x27;; return; }
+  list.innerHTML=data.map(r=&gt;`&lt;div class=&quot;border rounded p-3 text-sm&quot;&gt;&lt;div class=&quot;flex justify-between&quot;&gt;&lt;span class=&quot;font-bold&quot;&gt;${r.ticket_no}&lt;/span&gt;&lt;span class=&quot;text-xs ${r.loss_pct&lt;2?&#x27;bg-green-100 text-green-700&#x27;:&#x27;bg-red-100 text-red-700&#x27;} px-2 py-0.5 rounded&quot;&gt;Loss ${parseFloat(r.loss_pct).toFixed(2)}%&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;text-xs text-slate-600 mt-1&quot;&gt;Linked: ${r.inbound_ticket_no} (${r.inbound_kg}kg) → Waste ${r.waste_kg}kg + Clean ${r.clean_kg}kg = Loss ${r.loss_kg}kg&lt;/div&gt;&lt;/div&gt;`).join(&#x27;&#x27;);
+}
+document.getElementById(&#x27;refreshSortBtn&#x27;)?.addEventListener(&#x27;click&#x27;, loadSorting);
+document.getElementById(&#x27;syncBtn&#x27;)?.addEventListener(&#x27;click&#x27;, ()=&gt;{ syncQueue(); syncSortQueue(); });
+
+loadInbound(); loadInboundSelect(); loadSorting();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div><!--$--><!--/$--><script src="/_next/static/immutable/chunks/36baba7il59p9.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n3:I[498022,[\"/_next/static/immutable/chunks/1dq47j4p-xg3o.js\"],\"default\"]\n4:I[410469,[\"/_next/static/immutable/chunks/1dq47j4p-xg3o.js\"],\"default\"]\n6:I[430098,[\"/_next/static/immutable/chunks/1dq47j4p-xg3o.js\"],\"OutletBoundary\"]\n7:\"$Sreact.suspense\"\na:I[430098,[\"/_next/static/immutable/chunks/1dq47j4p-xg3o.js\"],\"ViewportBoundary\"]\nc:I[430098,[\"/_next/static/immutable/chunks/1dq47j4p-xg3o.js\"],\"MetadataBoundary\"]\ne:I[161360,[\"/_next/static/immutable/chunks/1dq47j4p-xg3o.js\"],\"default\",1]\n:HL[\"/_next/static/immutable/chunks/0_n83orcwyk4s.css\",\"style\"]\n:HL[\"/_next/static/immutable/chunks/1bu7odp3ip0pm.css\",\"style\"]\n:HL[\"/_next/static/immutable/media/OptimisticAI_VF_Optimized-s.p.41te7jvyx2g5b.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/_next/static/immutable/media/OptimisticAI_W_TextRegularIt-s.p.3i-4g1i3oysuq.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/_next/static/immutable/chunks/42e7h9g2vn8e3.css\",\"style\"]\n:HL[\"/_next/static/immutable/chunks/287l5xq35imjj.css\",\"style\"]\n:HL[\"/_next/static/immutable/chunks/17oghy4n4g9qf.css\",\"style\"]\n9:X\n0:{\"P\":null,\"c\":[\"\",\"document?artifact_uuid=a7f0c6df-a449-4147-9e5e-43a43b17697a\u0026ext=1791525600\u0026hash=Q5fpDAFWP92vTj45sRBa6saHrCXO\u0026theme=dark\"],\"q\":\"?artifact_uuid=a7f0c6df-a449-4147-9e5e-43a43b17697a\u0026ext=1791525600\u0026hash=Q5fpDAFWP92vTj45sRBa6saHrCXO\u0026theme=dark\",\"i\":false,\"f\":[[[\"\",{\"children\":[\"document\",{\"children\":[\"__PAGE__?{\\\"artifact_uuid\\\":\\\"a7f0c6df-a449-4147-9e5e-43a43b17697a\\\",\\\"ext\\\":\\\"1791525600\\\",\\\"hash\\\":\\\"Q5fpDAFWP92vTj45sRBa6saHrCXO\\\",\\\"theme\\\":\\\"dark\\\"}\",{},\"$undefined\",\"$undefined\",4096]},\"$undefined\",\"$undefined\",4096]},\"$undefined\",\"$undefined\",4112],[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/immutable/chunks/0_n83orcwyk4s.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"link\",\"1\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/immutable/chunks/1bu7odp3ip0pm.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/immutable/chunks/1dq47j4p-xg3o.js\",\"async\":true,\"nonce\":\"$undefined\"}]],\"$L2\"]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L3\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L4\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[\"$L5\",[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/immutable/chunks/42e7h9g2vn8e3.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"link\",\"1\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/immutable/chunks/287l5xq35imjj.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"link\",\"2\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/immutable/chunks/17oghy4n4g9qf.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/immutable/chunks/2t-jlsga_9q2d.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L6\",null,{\"children\":[\"$\",\"$7\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@8\"}]}]]}],{},null,false,null]},null,false,\"$9\"]},null,false,null],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$La\",null,{\"children\":\"$Lb\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$Lc\",null,{\"children\":[\"$\",\"$7\",null,{\"name\":\"Next.Metadata\",\"children\":\"$Ld\"}]}]}],[\"$\",\"meta\",null,{\"name\":\"next-size-adjust\",\"content\":\"\"}]]}],false]],\"m\":\"$undefined\",\"G\":[\"$e\",[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/immutable/chunks/0_n83orcwyk4s.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"link\",\"1\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/immutable/chunks/1bu7odp3ip0pm.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]]],\"S\":false,\"h\":null,\"r\":\"$undefined\",\"s\":\"$undefined\",\"a\":\"$undefined\",\"l\":\"$undefined\",\"p\":\"$undefined\",\"d\":\"$undefined\",\"b\":\"ghwebn-ZvNiLXs7nwo4Uo\"}\n9:C\n2:[\"$\",\"html\",null,{\"lang\":\"en\",\"className\":\"optimisticai_d4925249-module__WZtcjq__variable optimisticmono_9b82a078-module__hMSRWa__variable dark\",\"children\":[[\"$\",\"head\",null,{\"children\":false}],[\"$\",\"body\",null,{\"children\":[\"$\",\"$L3\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L4\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[null,[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}]\nb:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n8:null\nd:[]\nf:I[247881,[\"/_next/static/immutable/chunks/1dq47j4p-xg3o.js\",\"/_next/static/immutable/chunks/2t-jlsga_9q2d.js\"],\"TextViewer\"]\n10:T4df4,\u003c!DOCTYPE html\u003e\n\u003chtml lang=\"en\"\u003e\n\u003chead\u003e\n\u003cmeta charset=\"UTF-8\"\u003e\n\u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"\u003e\n\u003ctitle\u003eTickets - Yard Part 2 Sorting\u003c/title\u003e\n\u003cscript src=\"https://cdn.tailwindcss.com\"\u003e\u003c/script\u003e\n\u003cscript src=\"https://unpkg.com/@supabase/supabase-js@2\"\u003e\u003c/script\u003e\n\u003cscript src=\"https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js\"\u003e\u003c/script\u003e\n\u003cstyle\u003ebody{font-family: Inter, system-ui, sans-serif}\u003c/style\u003e\n\u003c/head\u003e\n\u003cbody class=\"bg-slate-50 min-h-screen\"\u003e\n\u003cheader class=\"bg-slate-900 text-white p-4 sticky top-0 z-20\"\u003e\n  \u003cdiv class=\"max-w-6xl mx-auto flex justify-between items-center\"\u003e\n    \u003ch1 class=\"font-bold text-lg\"\u003e♻️ Tickets \u003cspan class=\"text-xs bg-blue-600 px-2 py-1 rounded ml-2\"\u003eYARD P2 SORTING\u003c/span\u003e\u003c/h1\u003e\n    \u003cdiv class=\"flex gap-2 text-xs\"\u003e\n      \u003cspan id=\"onlineStatus\" class=\"px-2 py-1 rounded bg-green-500\"\u003eOnline\u003c/span\u003e\n      \u003cspan id=\"offlineCount\" class=\"px-2 py-1 rounded bg-amber-500 hidden\"\u003e0 queued\u003c/span\u003e\n      \u003cbutton id=\"syncBtn\" class=\"px-2 py-1 rounded bg-white text-slate-900 hidden\"\u003eSync Now\u003c/button\u003e\n    \u003c/div\u003e\n  \u003c/div\u003e\n\u003c/header\u003e\n\n\u003cdiv class=\"max-w-6xl mx-auto p-4\"\u003e\n  \u003cdiv class=\"flex gap-2 mb-6 overflow-x-auto\"\u003e\n    \u003cbutton data-tab=\"ordering\" class=\"tab-btn px-4 py-2 rounded bg-white border\"\u003eOrdering\u003c/button\u003e\n    \u003cbutton data-tab=\"maintenance\" class=\"tab-btn px-4 py-2 rounded bg-white border\"\u003eMaintenance\u003c/button\u003e\n    \u003cbutton data-tab=\"internal\" class=\"tab-btn px-4 py-2 rounded bg-white border\"\u003eInternal\u003c/button\u003e\n    \u003cbutton data-tab=\"yard\" class=\"tab-btn px-4 py-2 rounded bg-slate-900 text-white\"\u003eYARD\u003c/button\u003e\n  \u003c/div\u003e\n\n  \u003cdiv id=\"tab-ordering\" class=\"tab-panel hidden\"\u003e\u003cdiv class=\"bg-white p-6 rounded shadow\"\u003eOrdering module\u003c/div\u003e\u003c/div\u003e\n  \u003cdiv id=\"tab-maintenance\" class=\"tab-panel hidden\"\u003e\u003cdiv class=\"bg-white p-6 rounded shadow\"\u003eMaintenance module\u003c/div\u003e\u003c/div\u003e\n  \u003cdiv id=\"tab-internal\" class=\"tab-panel hidden\"\u003e\u003cdiv class=\"bg-white p-6 rounded shadow\"\u003eInternal module\u003c/div\u003e\u003c/div\u003e\n\n  \u003cdiv id=\"tab-yard\" class=\"tab-panel\"\u003e\n    \u003cdiv class=\"flex gap-2 mb-4 overflow-x-auto\"\u003e\n      \u003cbutton data-yard=\"inbound\" class=\"yard-tab px-3 py-1.5 bg-white border rounded text-sm\"\u003e1. Inbound\u003c/button\u003e\n      \u003cbutton data-yard=\"sorting\" class=\"yard-tab px-3 py-1.5 bg-slate-900 text-white rounded text-sm\"\u003e2. Sorting\u003c/button\u003e\n      \u003cbutton disabled class=\"px-3 py-1.5 bg-white border rounded text-sm opacity-40\"\u003e3. Refining\u003c/button\u003e\n      \u003cbutton disabled class=\"px-3 py-1.5 bg-white border rounded text-sm opacity-40\"\u003e4. Storage\u003c/button\u003e\n      \u003cbutton disabled class=\"px-3 py-1.5 bg-white border rounded text-sm opacity-40\"\u003e5. Outbound\u003c/button\u003e\n    \u003c/div\u003e\n\n    \u003c!-- INBOUND PANEL --\u003e\n    \u003cdiv id=\"yard-inbound\" class=\"yard-panel hidden\"\u003e\n      \u003cdiv class=\"grid md:grid-cols-2 gap-6\"\u003e\n        \u003cdiv class=\"bg-white rounded-xl shadow p-5\"\u003e\n          \u003ch2 class=\"font-bold text-lg mb-1\"\u003eYard Inbound - YB-IN\u003c/h2\u003e\n          \u003cp class=\"text-xs text-slate-500 mb-4\"\u003eReceiver • 3 scales • Photo required\u003c/p\u003e\n          \u003cform id=\"inboundForm\" class=\"space-y-4\"\u003e\n            \u003cdiv\u003e\u003clabel class=\"text-sm font-medium\"\u003eScale *\u003c/label\u003e\u003cselect id=\"scale_id\" required class=\"w-full mt-1 border rounded p-2.5\"\u003e\u003coption value=\"\"\u003eSelect scale\u003c/option\u003e\u003coption value=\"SCALE-1\"\u003eSCALE-1\u003c/option\u003e\u003coption value=\"SCALE-2\"\u003eSCALE-2\u003c/option\u003e\u003coption value=\"SCALE-3\"\u003eSCALE-3\u003c/option\u003e\u003c/select\u003e\u003c/div\u003e\n            \u003cdiv\u003e\u003clabel class=\"text-sm font-medium\"\u003eWeight (kg) *\u003c/label\u003e\u003cinput id=\"weight_kg\" type=\"number\" step=\"0.01\" required placeholder=\"e.g. 245.50\" class=\"w-full mt-1 border rounded p-2.5\"\u003e\u003c/div\u003e\n            \u003cdiv\u003e\u003clabel class=\"text-sm font-medium\"\u003eScale QR\u003c/label\u003e\u003cdiv class=\"flex gap-2 mt-1\"\u003e\u003cinput id=\"scale_qr\" type=\"text\" placeholder=\"Scan or type QR\" class=\"flex-1 border rounded p-2.5\"\u003e\u003cbutton type=\"button\" id=\"qrBtn\" class=\"px-3 py-2 bg-slate-900 text-white rounded text-sm\"\u003e📷 Scan\u003c/button\u003e\u003c/div\u003e\u003cdiv id=\"qrReader\" class=\"mt-2 hidden\"\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv\u003e\u003clabel class=\"text-sm font-medium\"\u003eScale Photo *\u003c/label\u003e\u003cinput id=\"photo\" type=\"file\" accept=\"image/*\" capture=\"environment\" required class=\"w-full mt-1 border rounded p-2\"\u003e\u003cimg id=\"photoPreview\" class=\"mt-2 rounded hidden max-h-48 w-full object-cover\"\u003e\u003c/div\u003e\n            \u003cbutton type=\"submit\" class=\"w-full bg-green-600 text-white py-3 rounded font-bold\"\u003eSAVE YB-IN Ticket\u003c/button\u003e\n          \u003c/form\u003e\n        \u003c/div\u003e\n        \u003cdiv class=\"bg-white rounded-xl shadow p-5\"\u003e\u003cdiv class=\"flex justify-between items-center mb-3\"\u003e\u003ch3 class=\"font-bold\"\u003eRecent Inbounds\u003c/h3\u003e\u003cbutton id=\"refreshInboundBtn\" class=\"text-xs px-2 py-1 border rounded\"\u003eRefresh\u003c/button\u003e\u003c/div\u003e\u003cdiv id=\"inboundList\" class=\"space-y-2 max-h-[600px] overflow-auto\"\u003e\u003c/div\u003e\u003c/div\u003e\n      \u003c/div\u003e\n    \u003c/div\u003e\n\n    \u003c!-- SORTING PANEL --\u003e\n    \u003cdiv id=\"yard-sorting\" class=\"yard-panel\"\u003e\n      \u003cdiv class=\"grid md:grid-cols-2 gap-6\"\u003e\n        \u003cdiv class=\"bg-white rounded-xl shadow p-5\"\u003e\n          \u003ch2 class=\"font-bold text-lg mb-1\"\u003eSorting - YB-SORT\u003c/h2\u003e\n          \u003cp class=\"text-xs text-slate-500 mb-4\"\u003eMust link to YB-IN • Enforces Inbound = Waste + Clean + \u0026lt;2% loss\u003c/p\u003e\n          \u003cform id=\"sortingForm\" class=\"space-y-4\"\u003e\n            \u003cdiv\u003e\n              \u003clabel class=\"text-sm font-medium\"\u003eSelect Inbound Ticket YB-IN-xxx *\u003c/label\u003e\n              \u003cselect id=\"inbound_select\" required class=\"w-full mt-1 border rounded p-2.5\"\u003e\u003coption value=\"\"\u003eLoading YB-IN tickets...\u003c/option\u003e\u003c/select\u003e\n              \u003cdiv id=\"inboundInfo\" class=\"mt-2 text-xs bg-slate-50 p-2 rounded hidden\"\u003e\u003c/div\u003e\n            \u003c/div\u003e\n            \u003cdiv class=\"grid grid-cols-2 gap-3\"\u003e\n              \u003cdiv\u003e\u003clabel class=\"text-sm font-medium\"\u003eWaste (kg) *\u003c/label\u003e\u003cinput id=\"waste_kg\" type=\"number\" step=\"0.01\" required placeholder=\"0.00\" class=\"w-full mt-1 border rounded p-2.5\"\u003e\u003c/div\u003e\n              \u003cdiv\u003e\u003clabel class=\"text-sm font-medium\"\u003eClean (kg) *\u003c/label\u003e\u003cinput id=\"clean_kg\" type=\"number\" step=\"0.01\" required placeholder=\"0.00\" class=\"w-full mt-1 border rounded p-2.5\"\u003e\u003c/div\u003e\n            \u003c/div\u003e\n            \u003cdiv id=\"calcBox\" class=\"p-3 rounded border-2 border-slate-200 bg-slate-50\"\u003e\n              \u003cdiv class=\"text-xs space-y-1\"\u003e\n                \u003cdiv class=\"flex justify-between\"\u003e\u003cspan\u003eInbound:\u003c/span\u003e\u003cspan id=\"calcInbound\" class=\"font-bold\"\u003e-\u003c/span\u003e\u003c/div\u003e\n                \u003cdiv class=\"flex justify-between\"\u003e\u003cspan\u003eWaste + Clean:\u003c/span\u003e\u003cspan id=\"calcSum\"\u003e-\u003c/span\u003e\u003c/div\u003e\n                \u003cdiv class=\"flex justify-between\"\u003e\u003cspan\u003eLoss:\u003c/span\u003e\u003cspan id=\"calcLoss\"\u003e-\u003c/span\u003e\u003c/div\u003e\n                \u003cdiv class=\"flex justify-between text-sm mt-2 pt-2 border-t\"\u003e\u003cspan\u003eLoss %:\u003c/span\u003e\u003cspan id=\"calcPct\" class=\"font-bold text-lg\"\u003e-\u003c/span\u003e\u003c/div\u003e\n                \u003cdiv id=\"calcStatus\" class=\"mt-2 text-xs font-bold p-2 rounded text-center\"\u003eEnter Waste + Clean\u003c/div\u003e\n              \u003c/div\u003e\n            \u003c/div\u003e\n            \u003cbutton id=\"saveSortBtn\" type=\"submit\" disabled class=\"w-full bg-slate-300 text-white py-3 rounded font-bold\"\u003eEnter weights to validate\u003c/button\u003e\n          \u003c/form\u003e\n        \u003c/div\u003e\n        \u003cdiv class=\"bg-white rounded-xl shadow p-5\"\u003e\u003cdiv class=\"flex justify-between items-center mb-3\"\u003e\u003ch3 class=\"font-bold\"\u003eRecent Sorting\u003c/h3\u003e\u003cbutton id=\"refreshSortBtn\" class=\"text-xs px-2 py-1 border rounded\"\u003eRefresh\u003c/button\u003e\u003c/div\u003e\u003cdiv id=\"sortingList\" class=\"space-y-2 max-h-[600px] overflow-auto\"\u003e\u003c/div\u003e\u003c/div\u003e\n      \u003c/div\u003e\n    \u003c/div\u003e\n  \u003c/div\u003e\n\u003c/div\u003e\n\n\u003cscript\u003e\nconst SUPABASE_URL = 'https://odthhfckgkozetzcbglg.supabase.co';\nconst SUPABASE_ANON = 'sb_publishable_rmo6F4vWE0fJARhrElXshw_mRCjRzch';\nconst supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);\n\n// Tabs\ndocument.querySelectorAll('.tab-btn').forEach(b=\u003e{\n  b.addEventListener('click',()=\u003e{\n    document.querySelectorAll('.tab-btn').forEach(x=\u003ex.className='tab-btn px-4 py-2 rounded bg-white border');\n    b.className='tab-btn px-4 py-2 rounded bg-slate-900 text-white';\n    document.querySelectorAll('.tab-panel').forEach(p=\u003ep.classList.add('hidden'));\n    document.getElementById('tab-'+b.dataset.tab).classList.remove('hidden');\n  })\n});\ndocument.querySelectorAll('.yard-tab').forEach(b=\u003e{\n  b.addEventListener('click',()=\u003e{\n    document.querySelectorAll('.yard-tab').forEach(x=\u003ex.className='yard-tab px-3 py-1.5 bg-white border rounded text-sm');\n    b.className='yard-tab px-3 py-1.5 bg-slate-900 text-white rounded text-sm';\n    document.querySelectorAll('.yard-panel').forEach(p=\u003ep.classList.add('hidden'));\n    document.getElementById('yard-'+b.dataset.yard).classList.remove('hidden');\n  })\n});\n\n// Offline\nconst offlineKey='yard_offline_queue'; const offlineKey2='yard_sort_offline_queue';\nfunction getQueue(k){ try{ return JSON.parse(localStorage.getItem(k)||'[]')}catch{return []}}\nfunction setQueue(k,q){ localStorage.setItem(k, JSON.stringify(q)); updateOfflineUI();}\nfunction updateOfflineUI(){\n  const q1=getQueue(offlineKey); const q2=getQueue(offlineKey2); const total=q1.length+q2.length;\n  const el=document.getElementById('offlineCount'); const sync=document.getElementById('syncBtn');\n  if(total\u003e0){ el.textContent=total+' queued'; el.classList.remove('hidden'); sync.classList.remove('hidden'); } else { el.classList.add('hidden'); sync.classList.add('hidden'); }\n}\nfunction updateOnline(){\n  const online=navigator.onLine;\n  document.getElementById('onlineStatus').textContent=online?'Online':'Offline';\n  document.getElementById('onlineStatus').className='px-2 py-1 rounded text-xs '+(online?'bg-green-500':'bg-red-500');\n  if(online) { syncQueue(); syncSortQueue(); }\n}\nwindow.addEventListener('online', updateOnline); window.addEventListener('offline', updateOnline);\nupdateOnline(); updateOfflineUI();\n\n// Inbound (same as P1)\ndocument.getElementById('photo')?.addEventListener('change', e=\u003e{\n  const f=e.target.files[0]; if(!f) return;\n  const img=document.getElementById('photoPreview'); img.src=URL.createObjectURL(f); img.classList.remove('hidden');\n});\nlet html5Qr;\ndocument.getElementById('qrBtn')?.addEventListener('click', async ()=\u003e{\n  const reader=document.getElementById('qrReader'); reader.classList.toggle('hidden');\n  if(reader.classList.contains('hidden')){ if(html5Qr){ await html5Qr.stop(); } return; }\n  html5Qr = new Html5Qrcode(\"qrReader\");\n  try{ await html5Qr.start({ facingMode: \"environment\" }, { fps: 10, qrbox: 250 }, (decoded)=\u003e{ document.getElementById('scale_qr').value=decoded; html5Qr.stop(); reader.classList.add('hidden'); }, ()=\u003e{}); }catch(err){ alert('Camera error: '+err); }\n});\ndocument.getElementById('inboundForm')?.addEventListener('submit', async (e)=\u003e{\n  e.preventDefault();\n  const payload={ scale_id: document.getElementById('scale_id').value, weight_kg: parseFloat(document.getElementById('weight_kg').value), scale_qr: document.getElementById('scale_qr').value||null, _photoFile: document.getElementById('photo').files[0] };\n  if(!navigator.onLine){\n    const toStore={ ...payload, _photoName: payload._photoFile.name, _photoBase64: await fileToBase64(payload._photoFile) };\n    const q=getQueue(offlineKey); q.push(toStore); setQueue(offlineKey,q); alert('Offline - queued'); e.target.reset(); loadInbound(); return;\n  }\n  await saveInbound(payload); e.target.reset(); document.getElementById('photoPreview')?.classList.add('hidden');\n});\nasync function fileToBase64(file){ return new Promise(res=\u003e{ const r=new FileReader(); r.onload=()=\u003eres(r.result); r.readAsDataURL(file); }); }\nfunction base64ToFile(b64,name){ const arr=b64.split(','), mime=arr[0].match(/:(.*?);/)[1], bstr=atob(arr[1]); let n=bstr.length, u8=new Uint8Array(n); while(n--) u8[n]=bstr.charCodeAt(n); return new File([u8], name, {type:mime}); }\nasync function saveInbound(data){\n  try{\n    let photoFile=data._photoFile || (data._photoBase64?base64ToFile(data._photoBase64,data._photoName||'scale.jpg'):null);\n    let photoUrl=null;\n    if(photoFile){ const fileName=Date.now()+'_'+photoFile.name; const {error:upErr}=await supabase.storage.from('yard-photos').upload(fileName, photoFile); if(upErr) throw upErr; const {data:pub}=supabase.storage.from('yard-photos').getPublicUrl(fileName); photoUrl=pub.publicUrl; }\n    const {data:inserted,error}=await supabase.from('yard_inbound').insert({ scale_id:data.scale_id, weight_kg:data.weight_kg, scale_qr:data.scale_qr, photo_url:photoUrl }).select().single();\n    if(error) throw error; alert('Saved '+inserted.ticket_no); loadInbound(); loadInboundSelect();\n  }catch(err){ console.error(err); alert('Save failed: '+err.message+' - queued'); const q=getQueue(offlineKey); q.push(data); setQueue(offlineKey,q); }\n}\nasync function syncQueue(){\n  const q=getQueue(offlineKey); if(q.length===0) return;\n  document.getElementById('syncBtn').textContent='Syncing '+q.length+'...';\n  const remaining=[];\n  for(const item of q){ try{ await saveInbound(item); } catch{ remaining.push(item); } }\n  setQueue(offlineKey,remaining); document.getElementById('syncBtn').textContent='Sync Now'; loadInbound(); loadInboundSelect();\n}\nasync function loadInbound(){\n  const {data}=await supabase.from('yard_inbound').select('*').order('created_at',{ascending:false}).limit(20);\n  const list=document.getElementById('inboundList');\n  if(!data||data.length===0){ list.innerHTML='\u003cp class=\"text-xs text-slate-400\"\u003eNo tickets yet\u003c/p\u003e'; return; }\n  list.innerHTML=data.map(r=\u003e`\u003cdiv class=\"border rounded p-3 text-sm\"\u003e\u003cdiv class=\"flex justify-between\"\u003e\u003cspan class=\"font-bold\"\u003e${r.ticket_no}\u003c/span\u003e\u003cspan class=\"text-xs bg-slate-100 px-2 py-0.5 rounded\"\u003e${r.scale_id}\u003c/span\u003e\u003c/div\u003e\u003cdiv class=\"text-xs text-slate-600 mt-1\"\u003e${r.weight_kg} kg • QR: ${r.scale_qr||'-'} • ${new Date(r.created_at).toLocaleString()}\u003c/div\u003e${r.photo_url?`\u003cimg src=\"${r.photo_url}\" class=\"mt-2 rounded max-h-32 w-full object-cover\"\u003e`:''}\u003c/div\u003e`).join('');\n}\ndocument.getElementById('refreshInboundBtn')?.addEventListener('click', loadInbound);\n\n// Sorting logic\nlet inboundMap={};\nasync function loadInboundSelect(){\n  const {data}=await supabase.from('yard_inbound').select('id,ticket_no,weight_kg,scale_id').order('created_at',{ascending:false}).limit(100);\n  const sel=document.getElementById('inbound_select');\n  if(!data||data.length===0){ sel.innerHTML='\u003coption value=\"\"\u003eNo YB-IN tickets yet - create one first\u003c/option\u003e'; return; }\n  // filter out already sorted? show all for now but mark sorted\n  const {data:sorted}=await supabase.from('yard_sorting').select('inbound_id');\n  const sortedIds=new Set((sorted||[]).map(s=\u003es.inbound_id));\n  sel.innerHTML='\u003coption value=\"\"\u003eSelect YB-IN ticket\u003c/option\u003e'+data.map(r=\u003e{\n    const isSorted=sortedIds.has(r.id);\n    inboundMap[r.id]=r;\n    return `\u003coption value=\"${r.id}\" ${isSorted?'disabled':''}\u003e${r.ticket_no} - ${r.weight_kg}kg ${r.scale_id} ${isSorted?'(already sorted)':''}\u003c/option\u003e`;\n  }).join('');\n  // also store in map\n  data.forEach(r=\u003e{inboundMap[r.ticket_no]=r; inboundMap[r.id]=r;});\n}\ndocument.getElementById('inbound_select')?.addEventListener('change', e=\u003e{\n  const id=e.target.value; const r=inboundMap[id];\n  const info=document.getElementById('inboundInfo');\n  if(!r){ info.classList.add('hidden'); calc(); return; }\n  info.classList.remove('hidden');\n  info.innerHTML=`\u003cb\u003e${r.ticket_no}\u003c/b\u003e - Inbound Weight: \u003cb\u003e${r.weight_kg} kg\u003c/b\u003e from ${r.scale_id}`;\n  calc();\n});\nfunction calc(){\n  const sel=document.getElementById('inbound_select').value;\n  const inbound = inboundMap[sel]?.weight_kg || 0;\n  const waste=parseFloat(document.getElementById('waste_kg').value)||0;\n  const clean=parseFloat(document.getElementById('clean_kg').value)||0;\n  const sum=waste+clean;\n  const loss=inbound-sum;\n  const pct=inbound\u003e0?(loss/inbound*100):0;\n  document.getElementById('calcInbound').textContent=inbound?inbound.toFixed(2)+' kg':'-';\n  document.getElementById('calcSum').textContent=sum.toFixed(2)+' kg';\n  document.getElementById('calcLoss').textContent=loss.toFixed(2)+' kg';\n  document.getElementById('calcPct').textContent=pct.toFixed(2)+' %';\n  const status=document.getElementById('calcStatus');\n  const btn=document.getElementById('saveSortBtn');\n  if(inbound===0){ status.textContent='Select YB-IN first'; status.className='mt-2 text-xs font-bold p-2 rounded text-center bg-slate-100'; btn.disabled=true; btn.className='w-full bg-slate-300 text-white py-3 rounded font-bold'; btn.textContent='Select YB-IN first'; return; }\n  if(sum===0){ status.textContent='Enter Waste + Clean'; status.className='mt-2 text-xs font-bold p-2 rounded text-center bg-slate-100'; btn.disabled=true; btn.className='w-full bg-slate-300 text-white py-3 rounded font-bold'; return; }\n  if(loss\u003c0){ status.textContent='❌ Waste + Clean \u003e Inbound! Reduce.'; status.className='mt-2 text-xs font-bold p-2 rounded text-center bg-red-100 text-red-700'; btn.disabled=true; btn.className='w-full bg-red-300 text-white py-3 rounded font-bold'; btn.textContent='Invalid - Fix weights'; return; }\n  if(pct\u003e=2){ status.textContent=`❌ Loss ${pct.toFixed(2)}% \u003e=2% - NOT ALLOWED`; status.className='mt-2 text-xs font-bold p-2 rounded text-center bg-red-100 text-red-700'; btn.disabled=true; btn.className='w-full bg-red-400 text-white py-3 rounded font-bold'; btn.textContent=`Loss too high (${pct.toFixed(2)}%)`; return; }\n  status.textContent=`✅ OK - Loss ${pct.toFixed(2)}% \u003c2% - Can save`; status.className='mt-2 text-xs font-bold p-2 rounded text-center bg-green-100 text-green-700'; btn.disabled=false; btn.className='w-full bg-green-600 text-white py-3 rounded font-bold'; btn.textContent=`SAVE YB-SORT - Loss ${pct.toFixed(2)}%`;\n}\ndocument.getElementById('waste_kg')?.addEventListener('input', calc);\ndocument.getElementById('clean_kg')?.addEventListener('input', calc);\n\ndocument.getElementById('sortingForm')?.addEventListener('submit', async e=\u003e{\n  e.preventDefault();\n  const inboundId=document.getElementById('inbound_select').value;\n  const inboundRec=inboundMap[inboundId];\n  if(!inboundRec){ alert('Select inbound'); return; }\n  const payload={ inbound_id: inboundId, inbound_ticket_no: inboundRec.ticket_no, inbound_kg: inboundRec.weight_kg, waste_kg: parseFloat(document.getElementById('waste_kg').value), clean_kg: parseFloat(document.getElementById('clean_kg').value) };\n  if(!navigator.onLine){\n    const q=getQueue(offlineKey2); q.push(payload); setQueue(offlineKey2,q); alert('Offline - sorting queued'); e.target.reset(); calc(); return;\n  }\n  await saveSorting(payload); e.target.reset(); document.getElementById('inboundInfo').classList.add('hidden'); calc();\n});\n\nasync function saveSorting(data){\n  try{\n    const {data:ins,error}=await supabase.from('yard_sorting').insert(data).select().single();\n    if(error) throw error;\n    alert('Saved '+ins.ticket_no+' - Loss '+parseFloat(ins.loss_pct).toFixed(2)+'%');\n    loadSorting(); loadInboundSelect();\n  }catch(err){ alert('Save failed: '+err.message); console.error(err); }\n}\nasync function syncSortQueue(){\n  const q=getQueue(offlineKey2); if(q.length===0) return;\n  const remaining=[];\n  for(const item of q){ try{ await saveSorting(item); } catch{ remaining.push(item); } }\n  setQueue(offlineKey2,remaining);\n}\nasync function loadSorting(){\n  const {data}=await supabase.from('yard_sorting').select('*').order('created_at',{ascending:false}).limit(20);\n  const list=document.getElementById('sortingList');\n  if(!data||data.length===0){ list.innerHTML='\u003cp class=\"text-xs text-slate-400\"\u003eNo sorting yet\u003c/p\u003e'; return; }\n  list.innerHTML=data.map(r=\u003e`\u003cdiv class=\"border rounded p-3 text-sm\"\u003e\u003cdiv class=\"flex justify-between\"\u003e\u003cspan class=\"font-bold\"\u003e${r.ticket_no}\u003c/span\u003e\u003cspan class=\"text-xs ${r.loss_pct\u003c2?'bg-green-100 text-green-700':'bg-red-100 text-red-700'} px-2 py-0.5 rounded\"\u003eLoss ${parseFloat(r.loss_pct).toFixed(2)}%\u003c/span\u003e\u003c/div\u003e\u003cdiv class=\"text-xs text-slate-600 mt-1\"\u003eLinked: ${r.inbound_ticket_no} (${r.inbound_kg}kg) → Waste ${r.waste_kg}kg + Clean ${r.clean_kg}kg = Loss ${r.loss_kg}kg\u003c/div\u003e\u003c/div\u003e`).join('');\n}\ndocument.getElementById('refreshSortBtn')?.addEventListener('click', loadSorting);\ndocument.getElementById('syncBtn')?.addEventListener('click', ()=\u003e{ syncQueue(); syncSortQueue(); });\n\nloadInbound(); loadInboundSelect(); loadSorting();\n\u003c/script\u003e\n\u003c/body\u003e\n\u003c/html\u003e\n5:[\"$\",\"$Lf\",null,{\"content\":\"$10\",\"editable\":false,\"thumbnailZoom\":null}]\n"])</script></body></html>
+Displaying Artifact.html.
